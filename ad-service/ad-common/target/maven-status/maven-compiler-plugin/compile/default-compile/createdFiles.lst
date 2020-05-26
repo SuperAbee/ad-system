@@ -1,0 +1,6 @@
+com\abee\ad\exception\AdException.class
+com\abee\ad\advice\CommonResponseDataAdvice.class
+com\abee\ad\vo\CommonResponse.class
+com\abee\ad\annotation\IgnoreResponseAdvice.class
+com\abee\ad\config\WebConfiguration.class
+com\abee\ad\advice\GlobalExceptionAdvice.class
