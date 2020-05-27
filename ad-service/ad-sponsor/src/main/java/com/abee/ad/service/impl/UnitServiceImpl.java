@@ -115,7 +115,7 @@ public class UnitServiceImpl implements IUnitService {
     }
 
     @Override
-    public UnitDistrictResponse createDistrict(UnitDistrictRequest request) throws AdException {
+    public UnitDistrictResponse createUnitDistrict(UnitDistrictRequest request) throws AdException {
         List<Long> unitIds = request.getUnitDistricts().stream()
                 .map(UnitDistrictRequest.UnitDistrict::getUnitId)
                 .collect(Collectors.toList());

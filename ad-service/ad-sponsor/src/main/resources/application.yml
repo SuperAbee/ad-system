@@ -4,7 +4,7 @@ server:
     context-path: /ad-sponsor
 spring:
   application:
-    name: ad-sponsor
+    name: ad-sponsor-service
   jpa:
     show-sql: true
     hibernate:
