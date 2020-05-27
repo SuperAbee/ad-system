@@ -1,0 +1,3 @@
+com\abee\ad\ZuulGatewayApplication.class
+com\abee\ad\filter\PostRequestFilter.class
+com\abee\ad\filter\PreRequestFilter.class
