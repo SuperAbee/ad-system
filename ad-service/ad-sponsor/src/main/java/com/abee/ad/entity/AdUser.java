@@ -1,6 +1,8 @@
 package com.abee.ad.entity;
 
 import com.abee.ad.constant.CommonStatus;
+import com.abee.ad.utils.CommonUtils;
+import com.abee.ad.vo.UserPostRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -55,5 +57,9 @@ public class AdUser {
         this.userStatus = CommonStatus.VALID.getStatus();
         this.createTime = new Date();
         this.updateTime = this.createTime;
+    }
+
+    public AdUser(UserPostRequest request) {
+        this(request.getUsername(), CommonUtils.md5(request.getUsername()));
     }
 }

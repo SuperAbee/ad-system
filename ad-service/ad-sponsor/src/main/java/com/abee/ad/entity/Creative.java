@@ -1,7 +1,9 @@
 package com.abee.ad.entity;
 
+import com.abee.ad.constant.CommonStatus;
 import com.abee.ad.constant.CreativeMaterialType;
 import com.abee.ad.constant.CreativeType;
+import com.abee.ad.vo.CreativeRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -81,9 +83,7 @@ public class Creative {
     public Creative(String name, CreativeType type,
                     CreativeMaterialType materialType,
                     Integer height, Integer width, Long size,
-                    Integer duration, Integer auditStatus,
-                    Long userId, String url,
-                    Date createTime, Date updateTime) {
+                    Integer duration, Long userId, String url) {
         this.name = name;
         this.type = type.getStatus();
         this.materialType = materialType.getType();
@@ -91,10 +91,17 @@ public class Creative {
         this.width = width;
         this.size = size;
         this.duration = duration;
-        this.auditStatus = auditStatus;
+        this.auditStatus = CommonStatus.INVALID.getStatus();
         this.userId = userId;
         this.url = url;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
+        this.createTime = new Date();
+        this.updateTime = new Date();
+    }
+
+    public Creative(CreativeRequest request) {
+        this(request.getName(), request.getType(),
+                request.getMaterialType(), request.getHeight(),
+                request.getWidth(), request.getSize(),
+                request.getDuration(), request.getUserId(), request.getUrl());
     }
 }

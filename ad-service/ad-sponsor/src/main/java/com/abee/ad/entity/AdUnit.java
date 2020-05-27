@@ -1,6 +1,7 @@
 package com.abee.ad.entity;
 
 import com.abee.ad.constant.CommonStatus;
+import com.abee.ad.vo.UnitRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -66,5 +67,10 @@ public class AdUnit {
         this.budget = budget;
         this.createTime = new Date();
         this.updateTime = this.createTime;
+    }
+
+    public AdUnit(UnitRequest request) {
+        this(request.getPlanId(), request.getUnitName(),
+                request.getPositionType(), request.getBudget());
     }
 }

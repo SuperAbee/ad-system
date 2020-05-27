@@ -1,5 +1,6 @@
 package com.abee.ad.entity.condition;
 
+import com.abee.ad.vo.UnitDistrictRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -43,5 +44,11 @@ public class AdUnitDistrict {
         this.unitId = unitId;
         this.province = province;
         this.city = city;
+    }
+
+    public AdUnitDistrict(UnitDistrictRequest.UnitDistrict unitDistrict) {
+        setUnitId(unitDistrict.getUnitId());
+        setCity(unitDistrict.getCity());
+        setProvince(unitDistrict.getProvince());
     }
 }

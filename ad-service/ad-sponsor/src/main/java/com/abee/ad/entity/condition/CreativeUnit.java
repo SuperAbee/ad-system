@@ -1,5 +1,6 @@
 package com.abee.ad.entity.condition;
 
+import com.abee.ad.vo.CreativeUnitRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -38,5 +39,10 @@ public class CreativeUnit {
     public CreativeUnit(Long creativeId, Long unitId) {
         this.creativeId = creativeId;
         this.unitId = unitId;
+    }
+
+    public CreativeUnit(CreativeUnitRequest.CreativeUnitItem item) {
+        this.creativeId = item.getCreativeId();
+        this.unitId = item.getUnitId();
     }
 }

@@ -17,7 +17,7 @@ public class GlobalExceptionAdvice {
     public CommonResponse<String> handleAdException(HttpServletRequest request,
                                                     AdException e) {
         CommonResponse<String> response = new CommonResponse<>(-1,
-                "Unknown error");
+                "Error");
         response.setData(e.getMessage());
 
         return response;

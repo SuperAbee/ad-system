@@ -1,5 +1,6 @@
 package com.abee.ad.entity.condition;
 
+import com.abee.ad.vo.UnitItRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -38,5 +39,10 @@ public class AdUnitIt {
     public AdUnitIt(Long unitId, String itTag) {
         this.unitId = unitId;
         this.itTag = itTag;
+    }
+
+    public AdUnitIt(UnitItRequest.UnitIt unitIt) {
+        setUnitId(unitIt.getUnitId());
+        setItTag(unitIt.getItTag());
     }
 }

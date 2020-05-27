@@ -1,6 +1,9 @@
 package com.abee.ad.entity;
 
 import com.abee.ad.constant.CommonStatus;
+import com.abee.ad.exception.AdException;
+import com.abee.ad.utils.CommonUtils;
+import com.abee.ad.vo.PlanRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -66,5 +69,30 @@ public class AdPlan {
         this.endDate = endDate;
         this.createTime = new Date();
         this.updateTime = this.createTime;
+    }
+
+    public AdPlan(PlanRequest request) throws AdException {
+        this(request.getUserId(), request.getPlanName(),
+                CommonUtils.parseDate(request.getStartTime()),
+                CommonUtils.parseDate(request.getEndTime()));
+    }
+
+    public void update(AdPlan plan) {
+        if (plan.planName != null) {
+            setPlanName(plan.planName);
+        }
+        if (plan.startDate != null) {
+            setStartDate(plan.startDate);
+        }
+        if (plan.endDate != null) {
+            setEndDate(plan.endDate);
+        }
+
+        setUpdateTime(new Date());
+    }
+
+    public void delete() {
+        setPlanStatus(CommonStatus.INVALID.getStatus());
+        setUpdateTime(new Date());
     }
 }

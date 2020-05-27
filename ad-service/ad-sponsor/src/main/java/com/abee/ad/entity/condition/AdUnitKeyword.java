@@ -1,5 +1,6 @@
 package com.abee.ad.entity.condition;
 
+import com.abee.ad.vo.UnitKeywordRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -38,5 +39,9 @@ public class AdUnitKeyword {
     public AdUnitKeyword(Long unitId, String keyword) {
         this.unitId = unitId;
         this.keyword = keyword;
+    }
+
+    public AdUnitKeyword(UnitKeywordRequest.UnitKeyword keyword) {
+        this(keyword.getUnitId(), keyword.getKeyword());
     }
 }
