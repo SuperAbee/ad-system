@@ -17,6 +17,9 @@ import java.util.concurrent.ConcurrentSkipListSet;
 @Component
 public class CreativeUnitIndex implements IndexAware<String, CreativeUnitObject> {
 
+    /**
+     * Key of objectMap: object.getCreativeId() + ":" + object.getUnitId()
+     */
     private static Map<String, CreativeUnitObject> objectMap;
     private static Map<Long, Set<Long>> creativeUnitMap;
     private static Map<Long, Set<Long>> unitCreativeMap;
