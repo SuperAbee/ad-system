@@ -8,12 +8,12 @@ import java.util.List;
 
 /**
  * @author xincong yao
- * @see ParseTemplate
+ * @see DatabaseTemplate
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Template {
+public class JsonDatabase {
 
     private String database;
     private List<JsonTable> tableList;

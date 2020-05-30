@@ -1,4 +1,14 @@
 package com.abee.ad.mysql.listener;
 
-public class Ilistener {
+import com.abee.ad.mysql.dto.BinlogRowData;
+
+/**
+ * @author xincong yao
+ */
+public interface IListener {
+
+    void register();
+
+    void onEvent(BinlogRowData rowData);
+
 }

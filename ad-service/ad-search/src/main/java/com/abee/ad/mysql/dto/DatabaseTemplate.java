@@ -7,19 +7,28 @@ import java.util.Map;
 
 /**
  * @author xincong yao
- * @see Template
+ * @see JsonDatabase
  */
 @Data
-public class ParseTemplate {
+public class DatabaseTemplate {
 
     private String database;
 
     private Map<String, TableTemplate> tableTemplateMap = new HashMap<>();
 
-    public static ParseTemplate parse(Template _template) {
-        ParseTemplate template = new ParseTemplate();
-        template.setDatabase(_template.getDatabase());
+    public static DatabaseTemplate parse(JsonDatabase database) {
+        DatabaseTemplate template = new DatabaseTemplate();
+        template.setDatabase(database.getDatabase());
 
+        /**
+         * Translate each jsonTable to tableTemplate
+         */
+        Map<String, TableTemplate> tableTemplateMap = template.getTableTemplateMap();
+        for (JsonTable jsonTable : database.getTableList()) {
+            tableTemplateMap.put(jsonTable.getTableName(), TableTemplate.parse(jsonTable));
+        }
+
+        return template;
     }
 
 }
