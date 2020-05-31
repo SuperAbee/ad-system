@@ -45,7 +45,7 @@ public class UnitItIndex implements IndexAware<String, Set<Long>> {
 
     @Override
     public void add(String key, Set<Long> value) {
-        log.info("UnitItIndex, before add: {}", unitItMap);
+        log.debug("UnitItIndex, before add: {}", unitItMap);
 
         Set<Long> unitIdSet = CommonUtils.getOrCreate(
                 key, itUnitMap, ConcurrentSkipListSet::new);
@@ -57,7 +57,7 @@ public class UnitItIndex implements IndexAware<String, Set<Long>> {
             itSet.add(key);
         }
 
-        log.info("UnitItIndex, after add: {}", unitItMap);
+        log.debug("UnitItIndex, after add: {}", unitItMap);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class UnitItIndex implements IndexAware<String, Set<Long>> {
 
     @Override
     public void delete(String key, Set<Long> value) {
-        log.info("UnitItIndex, before delete: {}", unitItMap);
+        log.debug("UnitItIndex, before delete: {}", unitItMap);
 
         Set<Long> unitIds = CommonUtils.getOrCreate(
                 key, itUnitMap, ConcurrentSkipListSet::new);
@@ -79,7 +79,7 @@ public class UnitItIndex implements IndexAware<String, Set<Long>> {
             itSet.remove(key);
         }
 
-        log.info("UnitItIndex, after delete: {}", unitItMap);
+        log.debug("UnitItIndex, after delete: {}", unitItMap);
     }
 
     public boolean match(Long unitId, List<String> its) {

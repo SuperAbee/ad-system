@@ -27,27 +27,27 @@ public class UnitIndex implements IndexAware<Long, UnitObject> {
 
     @Override
     public void add(Long key, UnitObject value) {
-        log.info("UnitIndex, before add: {}", map);
+        log.debug("UnitIndex, before add: {}", map);
         map.put(key, value);
-        log.info("UnitIndex, after add: {}", map);
+        log.debug("UnitIndex, after add: {}", map);
     }
 
     @Override
     public void update(Long key, UnitObject value) {
-        log.info("UnitIndex, before update: {}", map);
+        log.debug("UnitIndex, before update: {}", map);
         UnitObject oldPlan = map.get(key);
         if (oldPlan == null) {
             map.put(key, value);
         } else {
             oldPlan.update(value);
         }
-        log.info("UnitIndex, after update: {}", map);
+        log.debug("UnitIndex, after update: {}", map);
     }
 
     @Override
     public void delete(Long key, UnitObject value) {
-        log.info("UnitIndex, before delete: {}", map);
+        log.debug("UnitIndex, before delete: {}", map);
         map.remove(key);
-        log.info("UnitIndex, after delete: {}", map);
+        log.debug("UnitIndex, after delete: {}", map);
     }
 }

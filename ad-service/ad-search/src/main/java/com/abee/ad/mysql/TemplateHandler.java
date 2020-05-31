@@ -58,7 +58,7 @@ public class TemplateHandler {
 
         try {
             JsonDatabase jsonDatabase = JSON.parseObject(
-                    inputStream, Charset.defaultCharset(), DatabaseTemplate.class);
+                    inputStream, Charset.defaultCharset(), JsonDatabase.class);
             template = DatabaseTemplate.parse(jsonDatabase);
             loadMeta();
         } catch (IOException e) {

@@ -27,27 +27,27 @@ public class PlanIndex implements IndexAware<Long, PlanObject> {
 
     @Override
     public void add(Long key, PlanObject value) {
-        log.info("PlanIndex, before add: {}", map);
+        log.debug("PlanIndex, before add: {}", map);
         map.put(key, value);
-        log.info("PlanIndex, after add: {}", map);
+        log.debug("PlanIndex, after add: {}", map);
     }
 
     @Override
     public void update(Long key, PlanObject value) {
-        log.info("PlanIndex, before update: {}", map);
+        log.debug("PlanIndex, before update: {}", map);
         PlanObject oldPlan = map.get(key);
         if (oldPlan == null) {
             map.put(key, value);
         } else {
             oldPlan.update(value);
         }
-        log.info("PlanIndex, after update: {}", map);
+        log.debug("PlanIndex, after update: {}", map);
     }
 
     @Override
     public void delete(Long key, PlanObject value) {
-        log.info("PlanIndex, before delete: {}", map);
+        log.debug("PlanIndex, before delete: {}", map);
         map.remove(key);
-        log.info("PlanIndex, after delete: {}", map);
+        log.debug("PlanIndex, after delete: {}", map);
     }
 }

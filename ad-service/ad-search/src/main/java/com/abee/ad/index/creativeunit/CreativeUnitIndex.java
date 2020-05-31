@@ -37,7 +37,7 @@ public class CreativeUnitIndex implements IndexAware<String, CreativeUnitObject>
 
     @Override
     public void add(String key, CreativeUnitObject value) {
-        log.info("CreativeUnitIndex before add: {}", objectMap);
+        log.debug("CreativeUnitIndex before add: {}", objectMap);
 
         objectMap.put(key, value);
 
@@ -49,7 +49,7 @@ public class CreativeUnitIndex implements IndexAware<String, CreativeUnitObject>
                 value.getUnitId(), unitCreativeMap, ConcurrentSkipListSet::new);
         creativeSet.add(value.getCreativeId());
 
-        log.info("CreativeUnitIndex, after add: {}", objectMap);
+        log.debug("CreativeUnitIndex, after add: {}", objectMap);
     }
 
     @Override
@@ -59,7 +59,7 @@ public class CreativeUnitIndex implements IndexAware<String, CreativeUnitObject>
 
     @Override
     public void delete(String key, CreativeUnitObject value) {
-        log.info("CreativeUnitIndex, before remove: {}", objectMap);
+        log.debug("CreativeUnitIndex, before remove: {}", objectMap);
 
         objectMap.remove(key);
 
@@ -71,6 +71,6 @@ public class CreativeUnitIndex implements IndexAware<String, CreativeUnitObject>
                 value.getUnitId(), unitCreativeMap, ConcurrentSkipListSet::new);
         creativeSet.remove(value.getCreativeId());
 
-        log.info("CreativeUnitIndex, after remove: {}", objectMap);
+        log.debug("CreativeUnitIndex, after remove: {}", objectMap);
     }
 }

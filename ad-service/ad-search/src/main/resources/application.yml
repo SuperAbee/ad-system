@@ -43,3 +43,5 @@ adconf:
     password: password
     binlogName: ""
     positon: -1
+  kafka:
+    topic: ad-service-mysql-data

@@ -4,6 +4,7 @@ import com.abee.ad.client.vo.Plan;
 import com.abee.ad.client.vo.PlanGetRequest;
 import com.abee.ad.vo.CommonResponse;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
