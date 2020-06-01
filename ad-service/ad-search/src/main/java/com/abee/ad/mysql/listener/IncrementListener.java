@@ -73,7 +73,6 @@ public class IncrementListener implements IListener {
             mySqlRowData.getFieldValueMap().add(afterMap);
         }
 
-
         sender.send(mySqlRowData);
     }
 }

@@ -72,9 +72,9 @@ public class AggregationListener implements BinaryLogClient.EventListener {
         /**
          * Find the event need to be handled.
          */
-        IListener listener = listenerMap.get(genKey(databaseName, tableName));
+        IListener listener = listenerMap.get(genKey(tableName, databaseName));
         if (listener == null) {
-            log.debug("skip: {}", genKey(databaseName, tableName));
+            log.debug("skip: {}", genKey(tableName, databaseName));
             return;
         }
 

@@ -42,7 +42,6 @@ public class KafkaSender implements ISender {
      */
     @KafkaListener(topics = {"ad-search-mysql-data"}, groupId = "ad-search")
     public void processMysqlRowData(ConsumerRecord<?, ?> record) {
-
         Optional<?> kafkaMessage = Optional.ofNullable(record.value());
         if (kafkaMessage.isPresent()) {
             Object message = kafkaMessage.get();

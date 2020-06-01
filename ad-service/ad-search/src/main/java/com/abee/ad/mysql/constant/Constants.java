@@ -27,7 +27,7 @@ public class Constants {
     }
 
     public static class AD_PLAN_TABLE_INFO {
-        public static final String TABLE_NAME = "ad_data";
+        public static final String TABLE_NAME = "ad_plan";
         public static final String COLUMN_ID = "id";
         public static final String COLUMN_USER_ID = "user_id";
         public static final String COLUMN_PLAN_STATUS = "plan_status";
