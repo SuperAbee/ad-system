@@ -3,8 +3,9 @@ package com.abee.ad.index.unit;
 import com.abee.ad.index.IndexAware;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -18,6 +19,36 @@ public class UnitIndex implements IndexAware<Long, UnitObject> {
 
     static {
         map = new ConcurrentHashMap<>();
+    }
+
+    public Set<Long> match(Integer positionType) {
+        Set<Long> result = new HashSet<>();
+
+        map.forEach((k, v) -> {
+            if (UnitObject.isSlotTypeValid(positionType, v.getPositionType())) {
+                result.add(k);
+            }
+        });
+
+        return result;
+    }
+
+    public List<UnitObject> fetch(Collection<Long> ids) {
+        if (CollectionUtils.isEmpty(ids)) {
+            return Collections.emptyList();
+        }
+
+        List<UnitObject> result = new ArrayList<>();
+        ids.forEach(e -> {
+            UnitObject o = map.get(e);
+            if (o == null) {
+                log.error("UnitObject not found: {}", e);
+                return;
+            }
+            result.add(o);
+        });
+
+        return result;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.abee.ad.index.district;
 
 import com.abee.ad.index.IndexAware;
+import com.abee.ad.search.vo.feature.DistrictFeature;
 import com.abee.ad.utils.CommonUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
@@ -13,6 +14,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
+import java.util.stream.Collectors;
 
 /**
  * @author xincong yao
@@ -82,10 +84,13 @@ public class UnitDistrictIndex implements IndexAware<String, Set<Long>> {
         log.debug("UnitDistrictIndex, after delete: {}", unitDistrictMap);
     }
 
-    public boolean match(Long unitId, List<String> districts) {
+    public boolean match(Long unitId, List<DistrictFeature.Location> districts) {
         Set<String> unitDistricts = unitDistrictMap.get(unitId);
         if (unitDistricts != null && !unitDistricts.isEmpty()) {
-            return CollectionUtils.isSubCollection(districts, unitDistricts);
+            List<String> targetDistricts = districts.stream()
+                    .map(d -> CommonUtils.concat(d.getProvince(), d.getCity()))
+                    .collect(Collectors.toList());
+            return CollectionUtils.isSubCollection(targetDistricts, unitDistricts);
         }
 
         return false;

@@ -1,12 +1,13 @@
 package com.abee.ad.index.creativeunit;
 
 import com.abee.ad.index.IndexAware;
+import com.abee.ad.index.unit.UnitObject;
 import com.abee.ad.utils.CommonUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Component;
 
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
 
@@ -72,5 +73,21 @@ public class CreativeUnitIndex implements IndexAware<String, CreativeUnitObject>
         creativeSet.remove(value.getCreativeId());
 
         log.debug("CreativeUnitIndex, after remove: {}", objectMap);
+    }
+
+    public List<Long> selectAds(List<UnitObject> units) {
+        if (CollectionUtils.isEmpty(units)) {
+            return Collections.emptyList();
+        }
+
+        List<Long> result = new ArrayList<>();
+        for (UnitObject unit : units) {
+            Set<Long> creative = unitCreativeMap.get(unit.getUnitId());
+            if (!CollectionUtils.isEmpty(creative)) {
+                result.addAll(creative);
+            }
+        }
+
+        return result;
     }
 }

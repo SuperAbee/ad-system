@@ -3,8 +3,9 @@ package com.abee.ad.index.creative;
 import com.abee.ad.index.IndexAware;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -17,6 +18,24 @@ public class CreativeIndex implements IndexAware<Long, CreativeObject> {
 
     static {
         map = new ConcurrentHashMap<>();
+    }
+
+    public List<CreativeObject> fetch(Collection<Long> ids) {
+        if (CollectionUtils.isEmpty(ids)) {
+            return Collections.emptyList();
+        }
+
+        List<CreativeObject> result = new ArrayList<>();
+        for (Long id : ids) {
+            CreativeObject o = map.get(id);
+            if (o == null) {
+                log.error("CreativeObject not found: {}", id);
+                continue;
+            }
+            result.add(o);
+        }
+
+        return result;
     }
 
     @Override
