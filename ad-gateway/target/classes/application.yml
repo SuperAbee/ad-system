@@ -15,3 +15,7 @@ zuul:
       path: /ad-sponsor/**
       serviceId: ad-sponsor-service
       strip-prefix: false
+    search:
+      path: /ad-search/**
+      serviceId: ad-search-service
+      strip-prefix: false
