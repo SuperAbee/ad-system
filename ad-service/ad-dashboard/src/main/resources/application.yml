@@ -1,0 +1,17 @@
+server:
+  port: 8300
+
+spring:
+  application:
+    name: ad-dashboard-service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:6000/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
