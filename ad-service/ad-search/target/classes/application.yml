@@ -44,4 +44,4 @@ adconf:
     binlogName: ""
     positon: -1
   kafka:
-    topic: ad-service-mysql-data
+    topic: ad-search-mysql-data
