@@ -18,6 +18,7 @@
         <module>ad-sponsor</module>
         <module>ad-search</module>
         <module>ad-export</module>
+        <module>ad-dashboard</module>
     </modules>
 
 
